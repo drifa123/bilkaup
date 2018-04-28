@@ -1,0 +1,557 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/app/add-car/add-car.component.ts</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="..\..\..\prettify.css" />
+    <link rel="stylesheet" href="..\..\..\base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(..\..\..\sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="..\..\..\index.html">All files</a> / <a href="index.html">src/app/add-car</a> add-car.component.ts
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">16.09% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>14/87</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/10</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">5.88% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>1/17</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">14.46% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>12/83</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CarService } from '../car.service';
+import { FormBuilder, FormControl, FormGroup, Validators, FormArray } from '@angular/forms';
+import { CarViewModel, CarDTO, WheelDTO, FuelTypeDTO, DriveSteeringDTO } from '../app.models';
+&nbsp;
+@Component({
+  selector: 'app-add-car',
+  templateUrl: './add-car.component.html',
+  styleUrls: ['./add-car.component.css']
+})
+&nbsp;
+export class AddCarComponent implements OnInit {
+&nbsp;
+  myForm: FormGroup;
+  carChange: CarViewModel;
+  car: CarViewModel;
+  carReady: boolean;
+  wheels: WheelDTO[];
+  fuelTypes: FuelTypeDTO[];
+  driveSteeringInfos: DriveSteeringDTO[];
+&nbsp;
+<span class="fstat-no" title="function not covered" >  constructor(private <span class="cstat-no" title="statement not covered" ></span>router: Router,</span>
+    private <span class="cstat-no" title="statement not covered" >route: ActivatedRoute,</span>
+    private <span class="cstat-no" title="statement not covered" >service: CarService,</span>
+    private <span class="cstat-no" title="statement not covered" >fb: FormBuilder)</span> { }
+&nbsp;
+&nbsp;
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >  ngOnInit() {</span></span>
+<span class="cstat-no" title="statement not covered" >    this.carReady = false;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    this.service.getWheels().subscribe(</span>
+<span class="fstat-no" title="function not covered" >      wheel =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >        this.wheels = wheel;</span>
+      }, <span class="fstat-no" title="function not covered" >err =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >        console.log('Unable to get wheels');</span>
+    });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    this.service.getFuelTypes().subscribe(</span>
+<span class="fstat-no" title="function not covered" >      fuel =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >        this.fuelTypes = fuel;</span>
+      let i;
+<span class="cstat-no" title="statement not covered" >      for (i = 0; i &lt; fuel.length; i++) {</span>
+<span class="cstat-no" title="statement not covered" >        console.log('Fuel: ' + fuel[i].fuel);</span>
+      }
+        // this.router.navigate(['../']);
+      }, <span class="fstat-no" title="function not covered" >err =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >        console.log('Unable to get FUEL');</span>
+    });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    this.service.getDriveSteeringInfos().subscribe(</span>
+<span class="fstat-no" title="function not covered" >      driveSteering =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >        this.driveSteeringInfos = driveSteering;</span>
+      let i;
+<span class="cstat-no" title="statement not covered" >      for (i = 0; i &lt; driveSteering.length; i++) {</span>
+<span class="cstat-no" title="statement not covered" >        console.log('DriveSteering: ' + driveSteering[i].name);</span>
+      }
+        // this.router.navigate(['../']);
+      }, <span class="fstat-no" title="function not covered" >err =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >        console.log('Unable to get driveSteering');</span>
+    });
+&nbsp;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    this.myForm = this.fb.group({</span>
+      regNum: new FormControl('', Validators.required)
+    });
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  submit() {</span>
+<span class="cstat-no" title="statement not covered" >    if (this.carReady === false) {</span>
+<span class="cstat-no" title="statement not covered" >      return;</span>
+    }
+&nbsp;
+    const wheelInputs = <span class="cstat-no" title="statement not covered" >document.getElementsByName('wheel');</span>
+<span class="cstat-no" title="statement not covered" >    this.car.wheel = new Array();</span>
+    let i;
+<span class="cstat-no" title="statement not covered" >    for (i = 0; i &lt; wheelInputs.length; i++) {</span>
+        const chk = &lt;HTMLInputElement&gt;<span class="cstat-no" title="statement not covered" >wheelInputs[i];</span>
+<span class="cstat-no" title="statement not covered" >        if (chk.checked) {</span>
+<span class="cstat-no" title="statement not covered" >          this.car.wheel.push(+wheelInputs[i].id);</span>
+<span class="cstat-no" title="statement not covered" >          console.log(wheelInputs[i].id);</span>
+        }
+    }
+&nbsp;
+    const fuelInputs = <span class="cstat-no" title="statement not covered" >document.getElementsByName('fuel');</span>
+<span class="cstat-no" title="statement not covered" >    this.car.fuelType = new Array();</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    for (i = 0; i &lt; fuelInputs.length; i++) {</span>
+<span class="cstat-no" title="statement not covered" >         if ((&lt;HTMLInputElement&gt;fuelInputs[i]).checked) {</span>
+<span class="cstat-no" title="statement not covered" >           this.car.fuelType.push(+fuelInputs[i].id);</span>
+<span class="cstat-no" title="statement not covered" >           console.log('Pushing fueltype: ' + fuelInputs[i].id);</span>
+         }
+     }
+&nbsp;
+     const driveSteeringInputs = <span class="cstat-no" title="statement not covered" >document.getElementsByName('driveSteering');</span>
+<span class="cstat-no" title="statement not covered" >    this.car.driveSteering = new Array();</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    for (i = 0; i &lt; driveSteeringInputs.length; i++) {</span>
+<span class="cstat-no" title="statement not covered" >         if ((&lt;HTMLInputElement&gt;driveSteeringInputs[i]).checked) {</span>
+<span class="cstat-no" title="statement not covered" >           this.car.driveSteering.push(+driveSteeringInputs[i].id);</span>
+<span class="cstat-no" title="statement not covered" >           console.log('Pushing driveSteering: ' + driveSteeringInputs[i].id);</span>
+         }
+     }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    this.car.carSaleId = +localStorage.getItem('id');</span>
+<span class="cstat-no" title="statement not covered" >    console.log(this.myForm.value);</span>
+<span class="cstat-no" title="statement not covered" >    console.log(this.car);</span>
+    const reply = <span class="cstat-no" title="statement not covered" >this.service.addCar(this.car).subscribe(</span>
+<span class="fstat-no" title="function not covered" >      car =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >        console.log('Car id added: ' + car);</span>
+        // this.router.navigate(['../']);
+      }, <span class="fstat-no" title="function not covered" >err =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >        console.log('Unable to send your car');</span>
+    });
+  }
+&nbsp;
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >  getCarFromSamgongustofa(</span>regNum: string) {</span>
+    const reply = <span class="cstat-no" title="statement not covered" >this.service.getCarFromSamgongustofa(regNum).subscribe(</span>
+<span class="fstat-no" title="function not covered" >      car =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >        this.car = new CarViewModel();</span>
+<span class="cstat-no" title="statement not covered" >          this.car.regNum = car.fastanumer;</span>
+<span class="cstat-no" title="statement not covered" >          this.car.manufacturer = car.tegund;</span>
+<span class="cstat-no" title="statement not covered" >          this.car.year = car.firstskrad;</span>
+<span class="cstat-no" title="statement not covered" >          this.car.model = car.undirtegund;</span>
+<span class="cstat-no" title="statement not covered" >          this.car.color = car.litur;</span>
+<span class="cstat-no" title="statement not covered" >          this.car.co2 = car.co2losun;</span>
+<span class="cstat-no" title="statement not covered" >          this.car.weight = car.eiginthyngd;</span>
+<span class="cstat-no" title="statement not covered" >          this.car.status = car.stada;</span>
+<span class="cstat-no" title="statement not covered" >          this.car.nextCheckUp = car.naestaadalskodun;</span>
+<span class="cstat-no" title="statement not covered" >          this.car.seating = 5;</span>
+<span class="cstat-no" title="statement not covered" >          this.car.doors = 5;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >          this.carReady = true;</span>
+          // this.openPage('Almennt');
+      }, <span class="fstat-no" title="function not covered" >err =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >        console.log(err);</span>
+<span class="cstat-no" title="statement not covered" >        console.log('Unable to get car from Samgongustofa');</span>
+      }
+    );
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  firstLetterCaps(</span>input: string) {
+<span class="cstat-no" title="statement not covered" >    return (!!input) ? input.charAt(0).toUpperCase() + input.substr(1).toLowerCase() : '';</span>
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  openPage(</span>pageName: string) {
+<span class="cstat-no" title="statement not covered" >    console.log('IN OPEN PAGE');</span>
+    // Hide all elements with class="tabcontent" by default */
+    let i, tabcontent, tablinks;
+<span class="cstat-no" title="statement not covered" >    tabcontent = document.getElementsByClassName('tabcontent');</span>
+<span class="cstat-no" title="statement not covered" >    for (i = 0; i &lt; tabcontent.length; i++) {</span>
+<span class="cstat-no" title="statement not covered" >      tabcontent[i].style.display = 'none';</span>
+    }
+&nbsp;
+    // Remove the background color of all tablinks/buttons
+<span class="cstat-no" title="statement not covered" >    tablinks = document.getElementsByClassName('tablink');</span>
+<span class="cstat-no" title="statement not covered" >    for (i = 0; i &lt; tablinks.length; i++) {</span>
+<span class="cstat-no" title="statement not covered" >        tablinks[i].style.backgroundColor = '';</span>
+    }
+&nbsp;
+    // Show the specific tab content
+<span class="cstat-no" title="statement not covered" >    document.getElementById(pageName).style.display = 'block';</span>
+  }
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Apr 27 2018 13:11:48 GMT+0000 (Greenwich Standard Time)
+</div>
+</div>
+<script src="..\..\..\prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="..\..\..\sorter.js"></script>
+</body>
+</html>

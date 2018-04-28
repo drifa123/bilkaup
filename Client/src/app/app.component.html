@@ -1,0 +1,32 @@
+<!--The content below is only a placeholder and can be replaced.-->
+
+      
+<header>
+  <div id="head">
+    <a href="./">BÍLKAUP</a>
+  </div>
+
+  <div class="float-right tiny-margin col-4 d-flex justify-content-end align-items-center">
+    <div class="dropdown">
+      <button class="car-login dropdown-toggle" id="loginDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+
+      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="loginDropdown">
+        <ng-container *ngIf="loggedIn !== true">  
+          <a class="dropdown-item" href="./login">Skrá inn</a>
+          <a class="dropdown-item" href="./register">Sækja um aðild</a>
+        </ng-container>
+        <ng-container *ngIf="loggedIn === true">
+          <a class="dropdown-item" href="{{myPage}}">Mínar síður</a>
+          <a class="dropdown-item" (click)="logout()">Skrá út</a>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</header>
+<div>
+  <router-outlet>
+  </router-outlet>
+</div>
+      
+
+

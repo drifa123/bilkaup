@@ -1,0 +1,334 @@
+<div class="search-container" *ngIf="filtersReady">
+    <div id="search-window" [style.margin-left]="getStyle()">
+        <ng-container *ngIf="filters !== undefined">
+            <ng-select id="fast-search-input" [(ngModel)]="selected" (change)="setFilter()" placeholder="Hveru leitar þú að?">
+                    <ng-option *ngFor="let m of filters.manufacturers" [value]="m">{{m.name}}</ng-option>
+                    <ng-container *ngFor="let m of filters.manufacturers">
+                        <ng-option *ngFor="let mo of m.models" [value]="mo">{{mo.name}}</ng-option>
+                    </ng-container>
+                    <ng-option *ngFor="let f of filters.doors" [value]="f">{{f.name}} dyra</ng-option>
+                    <ng-option *ngFor="let f of filters.seating" [value]="f">{{f.name}} sæta</ng-option>
+                    <ng-option *ngFor="let f of filters.transmissions" [value]="f">{{f.name}}</ng-option>
+                    <ng-option *ngFor="let f of filters.extraFeatures" [value]="f">{{f.name}}</ng-option>
+                    <ng-option *ngFor="let f of filters.colors" [value]="f">{{f.name}}</ng-option>
+                    <ng-option *ngFor="let f of filters.fuelTypes" [value]="f">{{f.name}}</ng-option>
+            </ng-select>
+            <br />
+
+            <ng-select [(ngModel)]="selected" (change)="setFilter()" placeholder="Framleiðendur">
+                <ng-option *ngFor="let m of filters.manufacturers" [value]="m">{{m.name}}</ng-option>
+            </ng-select>
+            <br />
+
+            <ng-select [(ngModel)]="selected" (change)="setFilter()" placeholder="Tegundir">
+                <ng-container *ngFor="let m of filters.manufacturers">
+                    <ng-container *ngIf="m.selected === true">
+                        <ng-option *ngFor="let mo of m.models" [value]="mo">{{mo.name}}</ng-option>
+                    </ng-container>
+                </ng-container>
+            </ng-select>
+            <br />
+        
+            <div class="dropdown-container">
+                <div class="btn-group dropright">
+                    Verð frá
+                    <button type="select" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{filters.priceFrom}}
+                    </button>
+                    <div class="dropdown-menu">
+                            <a class="dropdown-item" (click)='setPriceFrom(null)'>-</a>
+                        <div class="priceFromList" *ngFor="let p of filters.prices">  
+                            <ng-container *ngIf="p <= filters.priceTo || filters.priceTo === null"> 
+                            <a class="dropdown-item" (click)='setPriceFrom(p)'>{{p}}</a>
+                            </ng-container>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="btn-group dropright">
+                    Verð til
+                    <button type="select" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{filters.priceTo}}
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" (click)='setPriceTo(null)'>-</a>
+                        <div class="priceFromList" *ngFor="let p of filters.prices">
+                            <ng-container *ngIf="p >= filters.priceFrom || filters.priceFrom === null">  
+                                <a class="dropdown-item" (click)='setPriceTo(p)'>{{p}}</a>
+                            </ng-container>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="dropdown-container">
+                <div class="btn-group dropright">
+                    Akstur frá
+                    <button type="select" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{filters.milageFrom}} 
+                    </button>
+                    <div class="dropdown-menu">
+                            <a class="dropdown-item" (click)='setMilageFrom(null)'>-</a>
+                        <div class="milageFromList" *ngFor="let m of filters.milages">  
+                            <ng-container *ngIf="m <= filters.milageTo || filters.milageTo === null"> 
+                                <a class="dropdown-item" (click)='setMilageFrom(m)'>{{m}}</a>
+                            </ng-container>
+                        </div>
+                    </div>
+                </div>
+                <div class="btn-group dropright">
+                    Akstur til
+                    <button type="select" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{filters.milageTo}}
+                    </button>
+                    <div class="dropdown-menu">
+                            <a class="dropdown-item" (click)='setMilageTo(null)'>-</a>
+                        <div class="milageToList" *ngFor="let m of filters.milages">  
+                            <ng-container *ngIf="m >= filters.milageFrom || filters.milageFrom === null"> 
+                                <a class="dropdown-item" (click)='setMilageTo(m)'>{{m}}</a>
+                            </ng-container>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="dropdown-container">
+                <p>Akstur frá</p>
+                <div class="btn-group dropright">
+                    <button type="select" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{filters.milageFrom}} 
+                    </button>
+                    <div class="dropdown-menu">
+                            <a class="dropdown-item" (click)='setMilageFrom(null)'>-</a>
+                        <div class="milageFromList" *ngFor="let m of filters.milages">  
+                            <ng-container *ngIf="m <= filters.milageTo || filters.milageTo === null"> 
+                                <a class="dropdown-item" (click)='setMilageFrom(m)'>{{m}}</a>
+                            </ng-container>
+                        </div>
+                    </div>
+                </div>
+                <p>Akstur til</p>
+                <div class="btn-group dropright">
+                    <button type="select" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{filters.milageTo}}
+                    </button>
+                    <div class="dropdown-menu">
+                            <a class="dropdown-item" (click)='setMilageTo(null)'>-</a>
+                        <div class="milageToList" *ngFor="let m of filters.milages">  
+                            <ng-container *ngIf="m >= filters.milageFrom || filters.milageFrom === null"> 
+                                <a class="dropdown-item" (click)='setMilageTo(m)'>{{m}}</a>
+                            </ng-container>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+           
+            <div class="dropdown-container">
+                <p>Árgerð frá</p>
+                <div class="btn-group dropright">
+                    <button type="select" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{filters.yearFrom}} 
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" (click)='setYearFrom(null)'>-</a>
+                        <div class="milageFromList" *ngFor="let y of filters.years">  
+                        <ng-container *ngIf="y <= filters.yearTo || filters.yearTo === null">  
+                            <a class="dropdown-item" (click)='setYearFrom(y)'>{{y}}</a>
+                        </ng-container>
+                        </div>
+                    </div>
+                </div>
+                <!--p>Árgerð til</p>
+                <div class="btn-group dropright">
+                    <button type="select" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{filters.yearTo}}
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" (click)='setYearTo(null)'>-</a>
+                        <div class="milageToList" *ngFor="let y of filters.years ">
+                            <ng-container *ngIf="y >= filters.yearFrom || filters.yearFrom === null">  
+                                <a class="dropdown-item" (click)='setYearTo(y)'>{{y}}</a>
+                            </ng-container-->
+            </div>
+            <div class="advancedSearch" style="text-align:right" (click)='advancedSearch = !advancedSearch' >
+                <p>+ Nákvæmari leit</p>
+            </div>
+            <ng-container *ngIf="advancedSearch === true">
+                <div class="btn-group dropright">
+                    <button type="select" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Dyrafjöldi
+                    </button>
+                    <div class="dropdown-menu">
+                        <div class="milageToList" *ngFor="let f of filters.doors">
+                            <a class="dropdown-item" (click)='setFilter(f)'>{{f.name}}</a>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+            <br />
+            <div class="btn-group dropright">
+                <button type="select" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Sætafjöldi
+                </button>
+                <div class="dropdown-menu">
+                    <div class="milageToList" *ngFor="let f of filters.seating">
+                        <a class="dropdown-item" (click)='setFilter(f)'>{{f.name}}</a>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="btn-group dropright">
+                <button type="select" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Litur
+                </button>
+                <div class="dropdown-menu">
+                    <div class="milageToList" *ngFor="let f of filters.colors">
+                        <a class="dropdown-item" (click)='setFilter(f)'>{{f.name}}</a>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="advancedSearch"  (click)='extraFeatures = !extraFeatures' >
+                <h5>Aukahlutir</h5>
+            </div>
+            <ng-container *ngIf='extraFeatures === true'>
+                <div class="fuel-list-container">
+                    <div class="fuelList" *ngFor="let f of filters.extraFeatures">      
+                        <div class="extraFeatures" >
+                            <input ng-model="" [checked]="f.selected" type="checkbox" (change)='setFilter(f)'> {{f.name}}
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+        </ng-container>
+    <!--/div-->
+
+        <div id="arrow">
+            <ng-container *ngIf="hideSearch === false">
+                <img type="button" src="../../assets/images/arrow-in.png" (click)="toggleSearch()">
+            </ng-container>
+            <ng-container *ngIf="hideSearch === true">
+                <img type="button" src="../../assets/images/arrow-out.png" (click)="toggleSearch()">
+            </ng-container>
+        </div>
+    </div>
+    
+    <ng-container *ngIf="filters !== undefined">
+        <div class="filters">
+            <ng-container *ngFor="let m of filters.manufacturers">
+                <ng-container *ngIf="m.selected === true">
+                    <div class="filter-path" (click)="setFilter(m)">{{m.name}}</div>
+                </ng-container>
+                <ng-container *ngFor="let mo of m.models">
+                    <ng-container *ngIf="mo.selected === true">
+                        <div class="filter-path" (click)="setFilter(mo)">{{m.name}} {{mo.name}}</div>
+                    </ng-container>
+            </ng-container>
+     
+            <ng-container *ngIf="filters.priceFrom !== null">
+                <div class="filter-path" (click)="setPriceFrom(null)">verð frá: {{filters.priceFrom}}</div>
+            </ng-container>
+            <ng-container *ngIf="filters.priceTo !== null">
+                <div class="filter-path" (click)="setPriceTo(null)">verð til: {{filters.priceTo}}</div>
+            </ng-container>
+            <ng-container *ngIf="filters.yearFrom !== null">
+                <div class="filter-path" (click)="setYearFrom(null)">árgerð frá: {{filters.yearFrom}}</div>
+            </ng-container>
+            <ng-container *ngIf="filters.yearTo !== null">
+                <div class="filter-path" (click)="setYearTo(null)">árgerð til: {{filters.yearTo}}</div>
+            </ng-container>
+            <ng-container *ngIf="filters.milageFrom !== null">
+                <div class="filter-path" (click)="setMilageFrom(null)">akstur frá: {{filters.milageFrom}}</div>
+            </ng-container>
+            <ng-container *ngIf="filters.milageTo !== null">
+                <div class="filter-path" (click)="setMilageTo(null)">akstur til: {{filters.milageTo}}</div>
+            </ng-container>
+    </ng-container>
+    <div class="btn-group dropright">
+        <button type="sort" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Raða eftir - {{sort.name}}
+        </button>
+        <div class="dropdown-menu">
+            <div *ngFor="let s of sortFilters">  
+                <a class="dropdown-item" (click)='setSort(s)'>{{s.name}}</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="search-result-container">
+        <h2>Nýir bílar á skrá</h2>
+        <ng-container *ngIf="filters !== undefined">
+                <div class="filters-trail">
+                    <ng-container *ngFor="let m of filters.manufacturers">
+                        <ng-container *ngIf="m.selected === true">
+                            <div class="filter-path" (click)="setFilter(m)">{{m.name}}</div>
+                        </ng-container>
+                        <ng-container *ngFor="let mo of m.models">
+                            <ng-container *ngIf="mo.selected === true">
+                                <div class="filter-path" (click)="setFilter(mo)">{{m.name}} {{mo.name}}</div>
+                            </ng-container>
+                        </ng-container>
+                    </ng-container>
+                    <ng-container *ngFor="let f of filters.colors">
+                        <ng-container *ngIf="f.selected === true">
+                            <div class="filter-path" (click)="setFilter(f)">{{f.name}}</div>
+                        </ng-container>
+                    </ng-container>
+                    <ng-container *ngFor="let f of filters.extraFeatures">
+                        <ng-container *ngIf="f.selected === true">
+                            <div class="filter-path" (click)="setFilter(f)">{{f.name}}</div>
+                        </ng-container>
+                    </ng-container>
+                    <ng-container *ngFor="let f of filters.transmissions">
+                        <ng-container *ngIf="f.selected === true">
+                            <div class="filter-path" (click)="setFilter(f)">{{f.name}}</div>
+                        </ng-container>
+                    </ng-container>
+                    <ng-container *ngFor="let f of filters.fuelTypes">
+                        <ng-container *ngIf="f.selected === true">
+                            <div class="filter-path" (click)="setFilter(f)">{{f.name}}</div>
+                        </ng-container>
+                    </ng-container>
+                    <ng-container *ngFor="let f of filters.doors">
+                        <ng-container *ngIf="f.selected === true">
+                            <div class="filter-path" (click)="setFilter(f)">{{f.name}} dyra</div>
+                        </ng-container>
+                    </ng-container>
+                    <ng-container *ngFor="let f of filters.seating">
+                        <ng-container *ngIf="f.selected === true">
+                            <div class="filter-path" (click)="setFilter(f)">{{f.name}} sæta</div>
+                        </ng-container>
+                    </ng-container>
+                    <ng-container *ngIf="filters.priceFrom !== null">
+                        <div class="filter-path" (click)="setPriceFrom(null)">verð frá: {{filters.priceFrom}}</div>
+                    </ng-container>
+                    <ng-container *ngIf="filters.priceTo !== null">
+                        <div class="filter-path" (click)="setPriceTo(null)">verð til: {{filters.priceTo}}</div>
+                    </ng-container>
+                    <ng-container *ngIf="filters.yearFrom !== null">
+                        <div class="filter-path" (click)="setYearFrom(null)">árgerð frá: {{filters.yearFrom}}</div>
+                    </ng-container>
+                    <ng-container *ngIf="filters.yearTo !== null">
+                        <div class="filter-path" (click)="setYearTo(null)">árgerð til: {{filters.yearTo}}</div>
+                    </ng-container>
+                    <ng-container *ngIf="filters.milageFrom !== null">
+                        <div class="filter-path" (click)="setMilageFrom(null)">akstur frá: {{filters.milageFrom}}</div>
+                    </ng-container>
+                    <ng-container *ngIf="filters.milageTo !== null">
+                        <div class="filter-path" (click)="setMilageTo(null)">akstur til: {{filters.milageTo}}</div>
+                    </ng-container>
+                </div>
+            </ng-container>
+        <div class="search-result-list">
+            <div class="car-list" *ngFor="let c of cars">            
+                <div class="car-info-container" (click)='getCarDetailPage(c)'>
+                    <div> {{c.manufacturer}} {{c.model}}</div>
+                    <div>{{c.year}}</div>
+                    <div>{{c.milage}} km</div>
+                    <div>kr: {{c.price}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

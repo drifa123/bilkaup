@@ -1,0 +1,53 @@
+/* Style tab links */
+.tablink {
+    background-color: #ffffff;
+    color: #000000;
+    border: 1px solid #000000;
+    float: left;
+    outline: none;
+    cursor: pointer;
+    padding: 0.8rem 1rem;
+    font-size: 14px;
+    width: 16.2%;
+}
+
+.tablink:hover {
+    background-color: rgb(218, 218, 218);
+}
+
+.tablink:active {
+    background-color: rgb(218, 218, 218);
+    border-bottom: none;
+}
+
+/* Style the tab content (and add height:100% for full page content) */
+.tabcontent {
+    color: #000000;
+    display: none;
+    padding: 5rem 1rem;
+    height: 100%;
+}
+  
+#Almennt {
+    background-color: #ffffff;
+}
+
+#Bunadur {
+    background-color:  #ffffff;
+}
+
+#Auka {
+    background-color: #ffffff;
+}
+
+#Hjol {
+    background-color: #ffffff;
+}
+
+#Vel {
+    background-color:  #ffffff;
+}
+
+#Eigandi {
+    background-color: #ffffff;
+}

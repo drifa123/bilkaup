@@ -1,0 +1,35 @@
+<ng-container *ngIf="carReady">
+  <!--<div class="text-center">
+    <strong>{{car.carsale.name}}</strong><br />
+    <p>
+      {{car.carsale.address}}<br />
+      {{car.carsale.email}}<br />
+      {{car.carsale.phoneNum}}
+    </p>
+  </div>-->
+  <div class="car-poster">
+    <h3>{{car.manufacturer}} {{car.model}} {{car.modelType}}</h3>
+    <p>Árgerð {{car.year}}</p>
+    <p>
+      <strong>Litur: </strong>{{car.color}}<br />
+      <strong>Akstur: </strong>{{car.milage}} km<br />
+      <strong>Skipting: </strong>{{car.transmission}}<br />
+      <strong>Eldsneyti: </strong><br />
+      <strong>Drif: </strong><br />
+      <strong>Nýskráning: </strong><br />
+    </p>
+    <br />
+    <div class="wrapper">
+      <div class="float-right text-center grid2">
+        <strong>Uppfærður:</strong><br />
+        {{car.dateUpdate | date: 'dd.MM.yyyy'}}
+      </div>
+  
+      <div class="float-left text-center grid2">
+        <strong>Á söluskrá:</strong><br />
+        {{car.dateSale | date: 'dd.MM.yyyy'}}
+      </div>
+    </div>
+
+  </div>
+</ng-container>

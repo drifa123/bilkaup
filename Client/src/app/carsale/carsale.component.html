@@ -1,0 +1,74 @@
+<div class="container">
+  <ng-container *ngIf="carSaleReady">
+    <h3>{{carSaleInfo.name}}</h3>
+    <strong>Heimilisfang: </strong>{{carSaleInfo.address}}<br />
+    <strong>Netfang: </strong>{{carSaleInfo.email}}<br />
+    <strong>Símanúmer: </strong>{{carSaleInfo.phoneNum}}<br />
+    <strong>Heimasíða: </strong><a href="http://{{carSaleInfo.webpage}}">{{carSaleInfo.webpage}}</a><br /><br />
+  
+    <h4>Opnunartímar</h4>
+    <ng-container *ngIf="carSaleInfo.openingHours != null">
+      <strong>Mánudagar: </strong> {{carSaleInfo.openingHours.monday}}<br />
+      <strong>Þriðjudagar: </strong> {{carSaleInfo.openingHours.tuesday}}<br />
+      <strong>Miðvikudagar: </strong> {{carSaleInfo.openingHours.wednesday}}<br />
+      <strong>Fimmtudagar: </strong> {{carSaleInfo.openingHours.thursday}}<br />
+      <strong>Föstudagar: </strong> {{carSaleInfo.openingHours.friday}}<br />
+      <strong>Laugadagar: </strong> {{carSaleInfo.openingHours.saturday}}<br />
+      <strong>Sunnudagar: </strong> {{carSaleInfo.openingHours.sunday}}<br />
+      <strong>Annað: </strong> {{carSaleInfo.openingHours.other}}<br />
+    </ng-container>
+  
+    <ng-container *ngIf="carSaleInfo.openingHours === null">
+      <p>SETJA HÉR INN OPNUNARTÍMA</p>
+    </ng-container>
+    <br />
+  
+    <h4>Bílar til sölu</h4>
+    <a href="./addcar" class="btn btn-default">Bæta við bíl</a>
+    <ng-container *ngIf="carSaleInfo.cars.length > 0">
+      <p>{{carSaleInfo.cars.length}} bílar til sölu</p>
+      <div class="car-list-container">
+        <div class="car-list">
+          <div class="car-info-container" 
+            *ngFor="let c of carSaleInfo.cars" 
+            (click)="carOptions($event, c.serialNum)"
+            id="carOptionDropdown" 
+            data-toggle="dropdown" 
+            aria-haspopup="true" 
+            aria-expanded="false"> 
+
+            <div class="dropdown">
+              <div class="droptown-menu car-option-dropdown" aria-labelledby="carOptionDropdown">
+                <ng-container *ngIf="showOptions && showID === c.serialNum">
+                  <a class="dropdown-item" href="./edit">Breyta</a>
+                  <a class="dropdown-item" (click)="sold(c.serialNum)">Seldur</a>
+                </ng-container>
+              </div>
+            </div>
+
+            <div class="img-square">
+              <div class="crop">
+                <ng-container *ngIf="c.imgLink != null">
+                  <img src="c.imgLink">
+                </ng-container>
+              </div>
+            </div>
+            <div class="car-info">
+              <span class="card-manufacturer">{{c.manufacturer}}</span><br />
+              <div class="card-model">
+                {{c.model}}
+                <ng-container *ngIf="c.modelType">
+                  {{c.modelType}}
+                </ng-container>
+              </div>
+
+              <div class="card-price">
+                {{c.price}} <span class="card-small-text">kr.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </ng-container>
+</div>

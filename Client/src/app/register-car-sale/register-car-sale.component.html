@@ -1,0 +1,38 @@
+<ng-container>
+  <h2>Sækja um aðild</h2>
+
+  <form (ngSubmit)="submit()" [formGroup]="myForm">
+    <div class="form-group">
+       <label for="name">Bílasala: </label>
+      <input type="text" name="name" class="form-control" id="name" formControlName="name"><br />
+    </div>
+   
+    <div class="form-group">
+      <label for="ssn">Kennitala: </label>
+      <input type="text" name="ssn" class="form-control" id="ssn" formControlName="ssn"><br />
+    </div>
+    
+    <div class="form-group">
+      <label for="email">Netfang: </label>
+      <input type="email" name="email" class="form-control" id="email" formControlName="email"><br />
+    </div>
+
+    <div class="form-group">
+      <label for="phoneNum">Símanúmer: </label>
+      <input type="text" name="phoneNum" class="form-control" id="ssn" formControlName="phoneNum"><br />
+    </div>
+
+    <div class="form-group">
+      <label for="address">Heimilisfang: </label>
+      <input type="text" name="address" class="form-control"id="address" formControlName="address"><br />      
+    </div>
+
+    <div class="form-group">
+      <label for="webpage">Heimasíða: </label>
+      <input type="text" name="webpage" class="form-control" id="webpage" formControlName="webpage"><br />
+    </div>
+
+    <button type="Submit" class="btn btn-primary" [disabled]="!myForm.valid">Submit</button>
+  </form>
+
+</ng-container>

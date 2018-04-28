@@ -1,0 +1,70 @@
+<h3>Aðgangsbeðnir</h3>
+<!-- Ef það eru aðgangsbeðnir -->
+<ng-container *ngIf="waitingCount > 0">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th> Nafn </th>
+        <th> Kennitala </th>
+        <th> Vefpóstur </th>
+        <th> Símanúmer </th>
+        <th> Heimilisfang </th>
+        <th> Vefsíða </th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <!--<tr *ngFor="let s of sellers | orderBy : ['name']">-->
+      <tr *ngFor="let c of carSales">
+        <ng-container *ngIf="c.accepted == false">
+          <td> {{c.name}}</td>
+          <td> {{c.ssn}} </td>
+          <td> {{c.email}} </td>
+          <td> {{c.phoneNum}} </td>
+          <td> {{c.address}} </td>
+          <td> <a href= "http://{{c.webPage}}">{{c.webPage}}</a> </td>
+          <!-- <td> <img src="{{seller.imagePath}}"alt="image of the seller"/> </td> -->
+          <td> <button class="btn btn-success btn-sm" (click)="acceptCarSale(c)">Samþykkja</button> </td>
+          <td> <button class="btn btn-danger btn-sm" (click)="denyCarSale(c)">Hafna</button> </td>
+        </ng-container>
+      </tr>
+    </tbody>
+  </table>
+</ng-container>
+
+<!-- Ef það eru engar aðgangsbeðnir -->
+<ng-container *ngIf="waitingCount == 0">
+  <div class="alert alert-secondary" role="alert">
+    Engin aðgangsbeðni eins og er
+  </div>
+</ng-container>
+<br /><br />
+
+<h3>Bílasölur með aðgang</h3>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th> Nafn </th>
+      <th> Kennitala </th>
+      <th> Vefpóstur </th>
+      <th> Símanúmer </th>
+      <th> Heimilisfang </th>
+      <th> Vefsíða </th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let c of carSales">
+      <ng-container *ngIf="c.accepted == true && c.active == true">
+        <td> {{c.name}}</td>
+        <td> {{c.ssn}} </td>
+        <td> {{c.email}} </td>
+        <td> {{c.phoneNum}} </td>
+        <td> {{c.address}} </td>
+        <td> <a href= "http://{{c.webPage}}">{{c.webPage}}</a> </td>
+        <td> <button class="btn btn-danger btn-sm" (click)="revokeCarSale(c)">Loka aðgang</button> </td>
+      </ng-container>
+    </tr>
+  </tbody>
+</table>

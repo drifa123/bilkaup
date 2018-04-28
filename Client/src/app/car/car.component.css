@@ -1,0 +1,9 @@
+.car-poster {
+    width: 30%;
+    background-color: #13577a;
+    color: #fff;
+    margin-left: 3rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+}

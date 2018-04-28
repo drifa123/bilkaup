@@ -1,0 +1,115 @@
+<ng-container>
+  <h2>Bæta við bíl</h2>
+  <form (ngSubmit)="getCarFromSamgongustofa(myForm.value.regNum)" [formGroup]="myForm">
+      
+    <div class="form-group">
+      <label for="regNum">Bílnúmer:
+      <input type="text" name="regNum" class="form-control" id="regNum" formControlName="regNum"><br />
+      </label>
+
+      <div>
+        <button class="btn btn-success btn-sm" [disabled]="!myForm.valid">Sækja bíl frá Samgöngustofu</button>
+      </div>
+    </div>
+  </form>
+
+  <form (ngSubmit)="submit()">
+    <ng-container *ngIf="carReady">
+      <button type="button" class="tablink" (click)="openPage('Almennt')" id="defaultOpen">Almennt</button>
+      <button type="button" class="tablink" (click)="openPage('Auka')">Aukabúnaður</button>
+      <button type="button" class="tablink" (click)="openPage('Hjol')">Hjól</button>
+      <button type="button" class="tablink" (click)="openPage('Vel')">Vél</button>
+      <button type="button" class="tablink" (click)="openPage('Eigandi')">Eigandi</button>
+
+      <!-- Almennt Tab -->
+      <div id="Almennt" class="tabcontent">
+        <h3>Almennt</h3>
+        <h5>{{car.manufacturer}} {{car.model}}</h5>
+        <label for="Verð">Verð: </label><input [(ngModel)]="car.price" [ngModelOptions]="{standalone: true}"><br />
+        <label for="Akstur">Akstur: </label><input [(ngModel)]="car.driven" [ngModelOptions]="{standalone: true}"><br />
+        <label for="Bílnúmer">Bílnúmer: </label>{{car.regNum}}<br />
+        <label for="Skráður">Skráður: </label>{{car.year}}<br />
+        <label for="Litur">Litur: </label><input [(ngModel)]="car.color" [ngModelOptions]="{standalone: true}"><br />
+        <label for="CO2 Losun">CO2 Losun: </label>{{car.co2}}<br />
+        <label for="Þyngd">Þyngd: </label>{{car.weight}}<br />
+        <label for="Innspíting">Innspíting: </label><input type="checkBox" name="checkBox1" id="checkBox1" [(ngModel)]="car.injection" [ngModelOptions]="{standalone: true}"><br />
+        <label for="Á staðnum">Á staðnum: </label><input type="checkBox" name="checkBox2" id="checkBox2" [(ngModel)]="car.onSite" [ngModelOptions]="{standalone: true}"><br />
+        <label for="Fjöldi dyra">Fjöldi dyra: </label><select [(ngModel)]="car.doors" [ngModelOptions]="{standalone: true}">
+          <option value="5">5</option>
+          <option value="4">4</option>
+          <option value="3">3</option>
+          <option value="2">2</option>
+        </select><br />
+        <label for="Fjöldi sæta">Fjöldi sæta: </label><select [(ngModel)]="car.seating" [ngModelOptions]="{standalone: true}"><br />
+          <option value="7">7</option>
+          <option value="6">6</option>
+          <option value="5">5</option>
+          <option value="4">4</option>
+          <option value="3">3</option>
+          <option value="2">2</option>
+        </select><br />
+        <label for="Fjöldi gíra">Fjöldi gíra: </label><select [(ngModel)]="car.drive" [ngModelOptions]="{standalone: true}"><br />
+          <option value="6">6 gíra</option>
+          <option value="5">5 gíra</option>
+          <option value="4">4 gíra</option>
+        </select><br />  
+        <label for="Gírskipting">Gírskipting: </label><select [(ngModel)]="car.transmission" [ngModelOptions]="{standalone: true}"><br />
+          <option value="1">Beinskipting</option>
+          <option value="2">Sjálfskipting</option>
+        </select><br />
+        <label for="Staða">Staða: </label>{{car.status}}<br />
+        <label for="Næsta skoðun">Næsta skoðun: </label>{{car.nextCheck}}<br /><br />
+
+        Orkutegundir:
+        <div *ngFor="let f of fuelTypes">
+            <label>
+              <input type="checkbox" name="fuel" id={{f.id}}/> {{f.fuel}}
+            </label>
+          </div>  
+
+      </div>
+    
+      <!-- Aukahlutir Tab -->
+      <div id="Auka" class="tabcontent">
+        <h3>Aukabúnaður</h3>
+        Drifrás:
+        <div *ngFor="let d of driveSteeringInfos">
+            <label>
+              <input type="checkbox" name="driveSteering" id={{d.id}}/> {{d.name}}
+            </label>
+          </div>  
+          <br />
+      </div>
+    
+      <!-- Hjólbúnaður Tab -->
+      <div id="Hjol" class="tabcontent">
+        <h3>Hjól</h3>
+          <div *ngFor="let w of wheels">
+            <label>
+              <input type="checkbox" name="wheel" id={{w.id}}/> {{w.name}}
+            </label>
+          </div>  
+      </div>
+  
+      <!-- Vél Tab -->
+      <div id="Vel" class="tabcontent">
+        <h3>Vél</h3>
+        <label for="Strokkar">Strokkar: </label><input [(ngModel)]="car.cylinders" [ngModelOptions]="{standalone: true}"><br />
+        <label for="Hestöfl">Hestöfl: </label><input [(ngModel)]="car.horsepower" [ngModelOptions]="{standalone: true}"><br />
+        <label for="Slagrými">Slagrými: </label><input [(ngModel)]="car.cc" [ngModelOptions]="{standalone: true}"><br />
+      </div>
+    
+      <!-- Eigandi Tab -->
+      <div id="Eigandi" class="tabcontent">
+        <h3>Eigandi</h3>
+        <p>...</p>
+      </div>
+
+      <div>
+          <button type="submit" class="btn btn-primary">Vista bíl</button>
+      </div>
+
+    </ng-container>
+  </form>
+
+</ng-container>

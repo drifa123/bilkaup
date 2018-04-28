@@ -1,0 +1,17 @@
+<div class="container">
+  <h2>Innskráning</h2>
+
+  <form (ngSubmit)="submit()" [formGroup]="myForm">
+    <div class="form-group">
+      <label for="email">Email: </label>
+      <input type="text" name="email" class="form-control" id="email" formControlName="email"><br />
+    </div>
+
+    <div class="form-group">
+      <label for="password">Lykilorð: </label>
+      <input type="password" name="password" class="form-control" id="password" formControlName="password"><br />
+    </div>
+
+    <button type="Submit" class="btn btn-primary" [disabled]="!myForm.valid">Skrá inn</button>
+  </form>
+</div>
